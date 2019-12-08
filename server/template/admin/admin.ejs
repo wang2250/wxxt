@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="<%=HTTP_ROOT%>/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="<%=HTTP_ROOT%>/font/iconfont.css">
+</head>
+<body>
+    <div class="top_left"><img src="<%=HTTP_ROOT%>/img/log.jpg" alt=""></div>
+    <div class="top_right"><i class="iconfont">&#xe662;</i></div>
+    <div class="content_left">
+            <div class="all" style="<%if(msg=='all'){%>color:skyblue; border-left:4px solid skyblue;<%}%>"><a href="<%=HTTP_ROOT%>/admin/banner" style="<%if(msg=='all'){%>color:skyblue;<%}%>"><i class="iconfont">&#xe63b;</i>所有项目</a></div>
+            <div class="unhandle" style="<%if(msg=='unhandle'){%>color:skyblue; border-left:4px solid skyblue;<%}%>"><a href="<%=HTTP_ROOT%>/admin/banner/unhandle" style="<%if(msg=='unhandle'){%>color:skyblue;<%}%>"><i class="iconfont">&#xe631;</i>未处理</a></div>
+            <div class="Processed" style="<%if(msg=='solve'){%>color:skyblue; border-left:4px solid skyblue;<%}%>"><a href="<%=HTTP_ROOT%>/admin/banner/solve" style="<%if(msg=='solve'){%>color:skyblue;<%}%>"><i class="iconfont">&#xe601;</i>已处理</a></div>
+ 
+            <div class="help" style="<%if(msg=='pj'){%>color:skyblue; border-left:4px solid skyblue;<%}%>" ><a href="<%=HTTP_ROOT%>/admin/banner/pj"><i class="iconfont">&#xe601;</i>评价</a></div>
+            <div class="my" style="<%if(msg=='my'){%>color:skyblue; border-left:4px solid skyblue;<%}%>" ><i class="iconfont">&#xe65d;</i><a href="<%=HTTP_ROOT%>/admin/banner/my" style="<%if(msg=='my'){%>color:skyblue;<%}%>">我的</a></div>
+            <div class="signout" style="color:white"><a href="<%=HTTP_ROOT%>/admin/signout">退出登录</a></div>
+            
+    </div>
+    <div class="bottom"><span>© 2019 星科工作室. All Rights Reserved.</span></div>
+   <div class="content">
+        <% datas.forEach((item,index)=>{ %>
+             <div class="ye">
+
+          <ul>
+                <% item.forEach(ite=>{ %>
+                     <li class="list <%=ite.onA%>">
+                         <p class="title"><i class="iconfont">&#xe83c;</i><%=ite.titleA%>
+                            <% if(ite.cd=="催单"){ %> <span style="color:red">（用户已催单）</span> <% } %>
+                        </p>
+                         <p class="miaoshu"><i style="color:red">姓名：</i><%=ite.name%></p>
+                         <p class="beizhu"><i style="color:red">地址：</i><%=ite.address%></p>
+                         <span class="state">
+                             <i class="iconfont stateChange">&#xe6cb;</i> 
+                             <i style="color:skyblue ;font-size:15px;"><%=ite.stateA%></i>
+                             
+                        </span>
+                         <span class="anniu"><i class="iconfont">&#xe870;</i><a href="<%=HTTP_ROOT%>/admin/details:<%=ite.onA%>">点击查看详情</a></span>
+                      
+                         
+                     </li>
+                   
+                    <% }) %>
+          </ul>
+    
+             </div>
+            <span class="fen" style="left: <%=280+index*35%>px;" ><%=index+1%></span>
+        <% }) %>
+   </div>
+   <script src="<%=HTTP_ROOT%>/js/admin.js"></script>
+   <script>
+   
+   
+   
+   if(window.name!="hasLoad"){     
+        location.reload();     
+        window.name = "hasLoad";     
+    }else{     
+        window.name="";     
+    } 
+    </script>
+</body>
+</html>

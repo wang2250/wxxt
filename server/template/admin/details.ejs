@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+
+}
+div i{
+    color: aqua;
+}
+
+
+</style>
+</head>
+<body>
+    <div class="title"><i>标题:</i><p><%=data.titleA%></p></div>
+    <div class="miaoshu"><i>描述:</i><p><%=data.describeA%></p></div>
+    <div class="beizhu"><i>备注:</i><p><%=data.remarksA%></p></div>
+    <div class="img"><i>图片:</i><p><img src="<%=HTTP_ROOT%>/upload/<%=data.srcA%>" alt=""></p></div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="<%=HTTP_ROOT%>/font/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="<%=HTTP_ROOT%>/css/index.css">
+</head>
+<body>
+    <div class="warpper" style="background:#e0f8fb">
+      <div class="nav">山东协和学院维修服务平台</div>
+      <div class="list" style="color:red">
+
+       
+
+       <div class="sousuo">
+         <form action="<%=HTTP_ROOT%>/found">
+           <input type="text" name="content" id="" placeholder="请输入维修单号">
+           <input type="submit" value="搜索" style="opacity:0;z-index: 1;;">
+           <i class="iconfont ss">&#xe782;</i>
+         </form>
+       </div>
+       <i class="iconfont dengluan" style="color:red">&#xe65d;</i>
+      
+      </div>
+      <div class="content">
+          <div class="subBtn"><i class="iconfont">&#xe8ac;</i>提交维修申请</div>
+          <div class="xian"></div>
+          <div class="success">已申报维修申请</div>
+          <div class="zhanshikuang">
+               <span class=" left iconfont">&#xe641;</span>
+               <span class=" right iconfont">&#xe63e;</span>
+              <ul class="zhanshi <%=number%>">
+                
+                  <% data.forEach(item=>{ %>
+                    <li class="zi">
+                        <div class="title"><i style="color: skyblue; font-size: 17px;" >标题：</i><i style="font-size:15px"><%=item.titleA%></i></div>
+                        <div class="miaoshu"><i style="color: skyblue"><p>描述：</p></i><%=item.describeA%></div>
+                        <div class="beizhu"><i style="color: skyblue">地址：</i><i style="font-size:14px"><%=item.address%></i></div>
+                        <div class="zhaopian">
+                         <img src="<%=HTTP_ROOT%>/upload/<%=item.srcA%>" alt="">
+                        </div>
+                      </li>
+                <% }) %>
+                  
+              </ul>
+          </div>
+      </div>
+      
+    </div>
+    <div class="buttom"><span>© 2019 星科工作室. All Rights Reserved.</span></div>
+    <div class="mengceng">
+      <div class="mn_content">
+       <div class="cuo">x</div>
+        <form action="<%=HTTP_ROOT%>/admin/sub" method="POST" enctype="multipart/form-data">
+         <span style="margin-left:100px">姓名：</span><input type="text" name="name" > <br><br><span style="margin-left:100px">电话：</span><input type="text" name="phone">
+         <p>标题：<input type="text" name="title"></p>
+         <p>描述：<textarea name="describe"></textarea></p>
+         <p>上传图片<input type="file" name="src"></p>
+         <p>地址：<input type="text" name="address" placeholder="请写明具体位置"></p>
+         <p><input type="submit" ></p>
+        </form>
+      </div>
+    </div>
+    
+   <script src="js/index.js"></script>
+   <script>
+   if(window.name!="hasLoad"){     
+        location.reload();     
+        window.name = "hasLoad";     
+    }else{     
+        window.name="";     
+    } </script>
+</body>
+</html>

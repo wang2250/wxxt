@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{
+          margin: 0 ;
+          padding: 0;
+        
+      }
+      .warpper{
+          margin-left: 10px;
+      }
+     .title{
+            margin-top:50px;
+          width: 80%;
+          border-bottom: 1px solid coral;
+      }
+      .content p:first-child{
+          color: sandybrown;
+          margin-top: 15px;
+      }
+      .content p:nth-of-type(2){
+          width: 300px;
+          height: 100px;
+          border-bottom: 1px solid coral;
+          
+      }
+      .content p:nth-of-type(3){
+        color: sandybrown;
+          margin-top: 15px;
+      }
+      .content p:nth-of-type(4){
+          width: 300px;
+          height: 30px;
+          border-bottom: 1px solid coral;
+          
+      }
+      .content p:nth-of-type(5){
+        color: sandybrown;
+          margin-top: 15px;
+      }
+      .content p:nth-of-type(6){
+        width: 300px;
+        height: 60px;
+        border-bottom: 1px solid coral;
+     
+      }
+
+   .img{
+    position: absolute;
+    left: 350px;
+    top:110px;
+    border: 1px solid firebrick;
+    width: 600px;
+    height: 400px;
+
+   }
+   .but{
+       width: 300px;
+       height: 50px;
+       position: absolute;
+       left: 10px;
+    top:460px;
+    
+   }
+ .but div{
+     width: 80px;
+     height: 30px;
+     background: sandybrown;
+     display: inline-block;
+     color:white;
+     line-height: 30px;
+     text-align: center;
+     margin-left: 30px;
+     border-radius: 3px;
+    
+ } 
+ .bottom{
+     position: absolute;
+     bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 40px;
+    background: seashell;
+    width: 100%;
+    height: 40px;;
+
+ }
+ .opt{
+    width: 300px;
+       height: 30px;
+     margin-top: 15px;
+     border-bottom: 1px solid coral;
+      
+ }
+ .opt span{
+     color: red;
+ }
+ .msg{
+    margin-left: 30px;
+ }
+ .msg input{
+     width: 50px;
+     height: 30px;
+     text-align: center;
+     background: darkorange;
+     color:white;
+  position: absolute;
+  bottom: -133px;
+  left: 240px;
+
+ }
+ .sta{
+   position: absolute;
+   left: 10px;
+   top:5px;
+   width: 520px;
+   height: 30px;
+
+ }
+    </style>
+</head>
+<body>
+  <div class="warpper">
+    <div class="sta" style="color:red">(此订单<%=data.stateA%> <% if(data.stateA == '无法解决'){%>请咨询管理员：15950469834<%}%>)</div>
+        <p  class="title"><%=data.titleA%>
+            <% if(data.cd=="催单"){ %> <span style="color:sandybrown">（用户已催单）</span> <% } %>
+        </p>
+     <div class="content">
+         <p>问题描述：</p>
+         <p><%=data.describeA%></p>
+         <p>地址：</p>
+         <p><%=data.address%></p>
+         <p>备注：</p>
+         <p><%=data.remarksA%></p>
+     </div>
+     <div class="img"><img src="<%=HTTP_ROOT%>/upload/<%=data.srcA%>" alt="" style="width: 100%; height: 100%;"></div>
+     <div class="opt">
+        <span> 姓名：</span><%=data.name%>    <span>联系电话：</span> <%=data.phone%>
+     </div>
+     <div class="but">               
+    <div class="but1"  style="<% if((data.cd=="催单" && ret=='yh')){ %>background:silver<% }  %>" ><% if(ret=='gl'){ %>已解决<% }else{%>催单<%} %></div>
+    <div class="byn2"  style="<% if(data.mssg && ret=='yh'){ %>background:silver<% }  %>" ><% if(ret=='gl'){ %>无法解决<% }else{%>评价<%} %></div>
+    <% if(ret=='yh'){ %>
+        
+       <% if(!data.mssg){ %>
+        
+        <form action="<%=HTTP_ROOT%>/msg:<%=data.onA%>" method="GET" class="msg" style="display:none">
+             
+            <textarea name="txt" id="" cols="30" rows="10"></textarea>
+            <input type="submit">
+        </form>
+        
+       <% } %>
+        
+    <% } %>
+     </div>
+
+  </div>
+  <div class="bottom"><span>© 2019 星科工作室. All Rights Reserved.</span></div>
+  <script>
+   let but1 = document.querySelector('.but1');
+   let but2 = document.querySelector('.byn2');
+   let msg = document.querySelector('.msg');
+   if('<%=data.stateA%>'!= '未解决' ){
+    but1.style.background = 'silver';
+    but2.style.background = 'silver';
+   }
+let flag = true;
+
+   but1.onclick = ()=>{
+       if('<%=ret%>'=='gl'){
+        if(flag){
+        if( '<%=data.stateA%>'== '未解决' && but1.innerHTML=='已解决'){
+        ajax({
+         type:'get',
+         url:'<%=HTTP_ROOT%>/admin/change/solve',
+         data:{
+            num:'<%=data.onA%>'
+         },
+         success:function(){
+             flag = false;
+            alert('标记成功');
+            but1.style.background = 'silver';
+            but2.style.background = 'silver';
+            if(window.name!="hasLoad"){     
+        location.reload();     
+        window.name = "hasLoad";     
+    }else{     
+        window.name="";     
+    } 
+         }
+      })
+       }else{
+           alert('您已标记过状态')
+       } 
+       }else{
+           alert('您已标记过状态')
+       } 
+       }else{
+        if('<%=data.cd%>'!='催单' && '<%=data.stateA%>'=='未解决'){
+        if(but1.innerHTML=='催单'){
+        ajax({
+         type:'get',
+         url:'<%=HTTP_ROOT%>/cuidan',
+         data:{
+           num:'<%=data.onA%>'
+         },
+         success:function(){
+           
+            
+            alert('催单成功');
+            cunDan = false;
+            but1.style.background = 'silver';
+            if(window.name!="hasLoad"){     
+        location.reload();     
+        window.name = "hasLoad";     
+    }else{     
+        window.name="";     
+    } 
+          
+         }
+      })
+       }
+       }else{
+         if('<%=data.stateA%>'!='未解决'){
+          alert('您的订单已处理')
+         }else{
+          alert('您已经催过单了')
+         }
+        
+       }
+       }
+       
+   }
+   but2.onclick = ()=>{
+       if('<%=ret%>'=='gl'){
+        if(flag){
+        if( '<%=data.stateA%>'== '未解决' && but2.innerHTML=='无法解决'){
+        ajax({
+         type:'get',
+         url:'<%=HTTP_ROOT%>/admin/change/fail',
+         data:{
+            numuber:'<%=data.onA%>'
+         },
+         success:function(){
+            flag = false;
+        
+            alert('标记成功');
+            but1.style.background = 'silver';
+            but2.style.background = 'silver';
+            if(window.name!="hasLoad"){     
+        location.reload();     
+        window.name = "hasLoad";     
+    }else{     
+        window.name="";     
+    } 
+         }
+      })
+       }else{
+        alert('您已过标记状态')
+       }
+       }else{
+        alert('您已过标记状态')
+       }
+       }else{
+     
+            try{
+                if('<%=data.stateA%>'== '已解决'){
+                  msg.style.display = 'block';
+                }else{
+                  alert('您的订单还没完成哦')
+                }
+
+     
+            }catch{
+                alert('您已经评价过了');
+            }
+       
+       }
+    }
+   
+   function ajax (obj) {
+   // type 请求方式, url 地址, params 参数, fun 回调函数
+     obj.type = obj.type.toUpperCase()            //在传入type的时候可以忽略大小写
+     var xhr = new XMLHttpRequest();
+     var timer = null;
+   //参数也可以指直接写字符串形式 不能是汉字
+     if (typeof obj.data === 'object') {        //如果在地址传入的东西是一个对象，我们将它的格式转化为urlencoded
+       var tempArr = []
+       for (var key in obj.data) {
+         var value = obj.data[key]
+         tempArr.push(encodeURIComponent(key) + '=' + encodeURIComponent(value))
+       }
+     obj.data = tempArr.join('&') //===>这里的格式就为parsms=[key1=value&key2=value2]
+     }
+ 
+     if (obj.type === 'GET') {
+       obj.url += '?' + obj.data;
+       xhr.open(obj.type, obj.url+"&t="+new Date().getTime(), true)
+       xhr.send();
+     }
+ 
+     //true代表异步
+ 
+ 
+     if (obj.type === 'POST') {    //如果请求的方式为POST，需要手动设置请求头的Content-Type
+         xhr.open(obj.type, obj.url+"&t="+new Date().getTime(), true)
+       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+ 
+       xhr.send(obj.data);
+     }
+ 
+     xhr.onreadystatechange = function () {
+       if (this.readyState === 4) {
+           clearTimeout(timer);
+        if(this.status >=200 && this.status<300 || this.status == 304){
+         obj.success(this.responseText);
+        }else{
+            obj.error();
+        }
+       }
+     }
+ 
+     
+     // 处理超时
+     if(obj.time){
+         timer = setTimeout(xhr.abort,obj.time)
+     }
+   }
+  </script>
+</body>
+</html>

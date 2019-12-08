@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="<%=HTTP_ROOT%>/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="<%=HTTP_ROOT%>/font/iconfont.css">
+</head>
+<body>
+    <div class="top_left"><img src="<%=HTTP_ROOT%>/img/log.jpg" alt=""></div>
+    <div class="top_right"><i class="iconfont">&#xe662;</i></div>
+    <div class="content_left">
+            <div class="all" style="<%if(msg=='all'){%>color:skyblue; border-left:4px solid skyblue;<%}%>"><a href="<%=HTTP_ROOT%>/admin/banner" style="<%if(msg=='all'){%>color:skyblue;<%}%>"><i class="iconfont">&#xe63b;</i>所有项目</a></div>
+            <div class="unhandle" style="<%if(msg=='unhandle'){%>color:skyblue; border-left:4px solid skyblue;<%}%>"><a href="<%=HTTP_ROOT%>/admin/banner/unhandle" style="<%if(msg=='unhandle'){%>color:skyblue;<%}%>"><i class="iconfont">&#xe631;</i>未处理</a></div>
+            <div class="Processed" style="<%if(msg=='solve'){%>color:skyblue; border-left:4px solid skyblue;<%}%>"><a href="<%=HTTP_ROOT%>/admin/banner/solve" style="<%if(msg=='solve'){%>color:skyblue;<%}%>"><i class="iconfont">&#xe601;</i>已处理</a></div>
+            <div class="help" style="<%if(msg=='pj'){%>color:skyblue; border-left:4px solid skyblue;<%}%>" ><a href="<%=HTTP_ROOT%>/admin/banner/pj"><i class="iconfont">&#xe601;</i>评价</a></div>
+            <div class="my" style="<%if(msg=='my'){%>color:skyblue; border-left:4px solid skyblue;<%}%>"><a href="<%=HTTP_ROOT%>/admin/banner/my" style="<%if(msg=='my'){%>color:skyblue;<%}%>"s><i class="iconfont">&#xe65d;</i>我的</a></div>
+
+            <div class="signout" style="color:white">退出登录</div>
+    </div>
+    <div class="bottom"><span>© 2019 星科工作室. All Rights Reserved.</span></div>
+   <div class="content">
+         <p style="color:aquamarine; font-size:22px; margin-left: 20px;">我的</p>
+         <p style=" font-size:15px; margin-left: 20px; color:silver">个人中心</p>
+         <div class="zy">
+             <p  style="position: absolute; bottom: 50px;left: 90px; font-size: 20px;">管理员</p>
+             <p style="position: absolute; bottom: 27px;left: 67px; color: silver;">维修部门负责人</p>
+         </div>
+         <form action="" class="cont">
+             <p>姓名</p>
+             <input type="text" name="name" id="" placeholder="管理员">
+             <p>邮箱</p>
+             <input type="text" name="email" placeholder="2458554387@163.com">
+             <p>密码</p>
+             <input type="password" placeholder="123456">
+             <p>手机号</p>
+             <input type="text" name="" id="" placeholder="15950469834">
+             <p>介绍</p>
+             <textarea name="" id="" cols="30" rows="10"></textarea><br>
+             <input type="submit" value="保存" style="font-size:15px;width:50px; height:30px; color:white">
+         </form>
+   </div>
+   <script src="<%=HTTP_ROOT%>/js/admin.js"></script>
+   <script>
+   if(window.name!="hasLoad"){     
+        location.reload();     
+        window.name = "hasLoad";     
+    }else{     
+        window.name="";     
+    } </script>
+</body>
+</html>

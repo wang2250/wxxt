@@ -1,0 +1,336 @@
+
+
+
+
+
+
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            width: 100%;
+            height:100%
+        }
+      body{
+          display: grid;
+          grid-template-columns: 20px 1fr 20px;
+          grid-template-rows: 20px 700px 50px;
+          background:#f9f9f9;
+      }
+      .mengceng{
+          width:100%;
+          height:100%;
+          position: absolute;
+          left: 0;
+          top:0;
+          background: rgba(0, 0, 0, .5);
+          display: none;
+          z-index: 100000;
+      }
+      .mn_content{
+          width: 650px;
+          height: 400px;
+          background:white;
+          position: absolute;
+          left:200px;
+          top:200px;
+          border-radius: 20px;
+          padding-top: 10px;
+        box-sizing: border-box;
+      }
+      .mn_content .cuo{
+          position: absolute;
+          top:0;
+          right: 0;
+          margin-right: 15px;
+          font-size: 30px;
+           cursor: pointer;
+      }
+      .mn_content p{
+          margin: 25px 0 0 100px;
+      }
+      .mn_content p:nth-of-type(1) input{
+            width: 300px;
+            height: 25px;
+
+      }
+     
+      .mn_content p:nth-of-type(2) textarea{
+        width: 300px;
+        height: 60px;
+        vertical-align: top;
+
+  }
+  .mn_content p:nth-of-type(4) input{
+       width: 300px;
+  }
+  .mn_content p:nth-of-type(5) input{
+    width: 100px;
+    height: 30px;
+    background: darkorange;
+    color: #f9f9f9;
+    font-size: 20px;
+}
+      .warpper{
+          grid-column-start: 2;
+          grid-row-start: 2;
+    
+          background-size: 100% 100%;
+          border-radius: 30px;
+          position: relative;
+          
+        
+      }
+      .nav{
+          background: #ff9000;
+          width: 210px;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          border-top-right-radius:15px;
+          border-bottom-right-radius:15px;
+          position: absolute;
+          left: 0;
+          top:40px;
+          color: white;
+      }
+      .nav:hover{
+          box-shadow: 2px pink;
+      }
+      .content{
+          
+          width:97%;
+          height: 450px;
+           background: #f9f9f9;
+          position: absolute;
+          left: 17px;
+          bottom: 0;
+          border-radius: 20px;
+          
+      }
+      .buttom{
+         grid-column-start: 2;
+          grid-row-start: 3;
+          background: #e0f8fb;
+          border-radius: 18px;
+          margin-top: 10px;
+      }
+      .buttom{
+          text-align: center;
+          line-height: 40px;
+          font-size: 13px;
+      }
+      .subBtn{
+          width: 180px;
+          height: 50px;
+          background: skyblue;
+          line-height: 50px;
+          text-align: center;
+          font-size: 23px;
+          border-radius: 18px;
+          position: absolute;
+          left: 390px;
+          top:60px;
+          font-family: _GB2312 KaiTi_GB2312;
+          color: black;
+          transition: all 2s;
+      }
+      .subBtn:hover{
+          background: #ff9000;
+      }
+      .subBtn i{
+          font-size: 25px;
+          color:aliceblue;
+      }
+
+      .xian{
+          width: 93%;
+        position: absolute;
+          left: 35px;
+          top:140px;
+          overflow: hidden;
+          border:1px dashed black;
+      }
+      .success{
+        position: absolute;
+          left: 35px;
+          top:116px;
+      }
+      .zhanshikuang{
+          width:90%;
+          height:300px;
+          position: absolute;
+          left: 35px;
+          top:150px;
+          
+          overflow: hidden;
+      }
+      .zhanshikuang span{
+          position: absolute;
+          z-index: 10000;
+          color:white;
+          font-size:40px;
+      }
+      .zhanshikuang .left{
+          left: 0;
+          top:100px;
+          color: #ff5000;
+      }
+      .zhanshikuang .right{
+        right: 0;
+        top:100px;
+        color: #ff5000;
+    }
+      .zhanshikuang .zhanshi{
+          width: 2000px;
+          height:300px;
+          font-size: 0;
+          transition: all 2s;
+      }
+      .zhanshi li{
+          float: left;
+          list-style: none;
+          width: 300px;
+          height:280px;
+          position: relative;
+          border:2px solid silver;
+          background: #fbeee0;
+          border-radius: 25px;
+          font-size: 20px;
+      }
+      .zi:not(:first-child){
+          margin-left: -150px;
+      }
+
+      .zhanshi li:hover{
+          z-index: 999;
+        
+      }
+      .zhanshi li div{
+          margin-left: 10px;
+          width: 280px;
+          overflow: hidden;
+      }
+      .title{
+        
+          height: 30px;
+        
+
+      }
+      .miaoshu{
+       
+          height: 90px;
+          font-size: 20px;
+             overflow: hidden;
+            word-wrap:break-word; 
+            font-size: 16px;      
+      }
+      .beizhu{
+    
+        height: 30px;
+        overflow: hidden;
+      }
+      .zhaopian{
+          height: 120px;
+          
+      }
+      .zhaopian img{
+           display: inline-block;
+          width: 280px;
+          height: 120px;
+    
+          
+      }
+      .list{
+          width: 280px;height: 40px; 
+          position: absolute;
+          right:0;
+          top:40px;
+          
+      }
+      
+      .list i{
+          font-size: 30px;
+          color:white;
+          margin-left: 220px;
+      }
+      
+      .list i:hover{
+          color: brown;
+          cursor: pointer;
+      }
+      
+      .list .dengluan:hover+.denglu{
+        display: block !important;
+      }
+      
+      .sousuo{
+          width: 198px;
+          height: 30px;
+           border: 1px solid #ff5000;
+           border-radius: 10px;
+           position: absolute;
+            left: 0;
+            top:0px;
+ 
+      }
+      .sousuo input:nth-of-type(1){
+          width: 150px;
+          height: 30px;
+          outline: none;
+          border:none;
+          background: none;
+          
+     
+      }
+      .sousuo input:nth-of-type(2){
+           height: 23px;
+           width: 40px;
+           display: inline-block;
+           font-size: 10px;
+           background: none;
+           outline: none;
+          border:none;
+          color: white;
+          position: relative;
+          
+
+      }
+    
+      /* .sousuo f .ss{
+       
+      } */
+      .sousuo form .ss{
+          font-size: 25px;
+        color: #ff9000;
+        position: relative;
+        left: -50px;
+        top:-29px;
+      }
+      .denglu{
+        width: 300px;
+          height: 170px;
+          background: white;
+          position: absolute;
+          left: -170px;
+          top:30px;
+          display: none;
+          z-index: 111;
+          border: 1px solid aqua;
+      }
+      .denglu form p input{
+          width: 190px;
+          height: 23px;
+          margin:20px 0 0 30px;
+          font-size: 18px;
+      }
+     
+      .denglu form p:nth-of-type(3) input{
+          width: 180px;
+          height: 40px;
+          background: rgb(226, 74, 57);
+            
+      }
+    
+  
